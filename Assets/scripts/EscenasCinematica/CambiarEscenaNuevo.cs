@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CambiarEscena : MonoBehaviour
+public class CambiarEscenaNuevo : MonoBehaviour
 {
     public float tiempo = 5f; // duración de la cinemática
 
