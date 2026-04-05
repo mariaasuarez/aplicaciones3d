@@ -12,6 +12,6 @@ public class CambiarEscena : MonoBehaviour
 
     void IrAlJuego()
     {
-        SceneManager.LoadScene("PrimerMapa1");
+        SceneManager.LoadScene("MapaCinematica");
     }
 }
