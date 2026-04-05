@@ -12,6 +12,6 @@ public class CambiarEscenaNuevo : MonoBehaviour
 
     void IrAlJuego()
     {
-        SceneManager.LoadScene("MapaCinematica");
+        SceneManager.LoadScene("MapaCinematica_final");
     }
 }
