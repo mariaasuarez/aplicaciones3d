@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Cinematica1.unity
     guid: f2d1bfda76b69b54f88919877eee5e98
   - enabled: 1
-    path: Assets/Scenes/PrimerMapa1.unity
+    path: Assets/Scenes/MapaCinematica.unity
     guid: c0b0e8a8ef0ea5a41a333a2b037e059e
   - enabled: 1
     path: Assets/Scenes/Cinematica2.unity
