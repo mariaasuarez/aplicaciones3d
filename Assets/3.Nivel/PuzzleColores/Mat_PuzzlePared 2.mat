@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Toon 14
-  m_Shader: {fileID: -6465566751694194690, guid: 860444d4db87f874fb7c5ae644f8f5f1, type: 3}
+  m_Name: Mat_PuzzlePared 2
+  m_Shader: {fileID: -6465566751694194690, guid: aa4befb670ea27543bfa4a872e89a5a8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -24,6 +24,22 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Oculta_Azul:
+        m_Texture: {fileID: 2800000, guid: e9a53135186d9994c8f77062b844df8a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Oculta_Roja:
+        m_Texture: {fileID: 2800000, guid: f3300ca1266b5b6498c2f112b2e62506, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Oculta_Verde:
+        m_Texture: {fileID: 2800000, guid: f9f8e2a5e036e064c85f506e412b9833, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Textura_Base:
+        m_Texture: {fileID: 2800000, guid: 195f2acd40a93b54582c53a5b90e45f6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -38,23 +54,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Glow_Size: 0.15
-    - _Highlight_Intensity: 0.4
-    - _Highlight_Size: 0.55
-    - _Outline_Size: 0.4
+    - _ColorSecreto: 0
+    - _FiltroGlobal: 3
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Shadows_Contrast: 1
-    - _Shadows_Size: 1
-    m_Colors:
-    - _Base_Color: {r: 0.40784317, g: 0.5882353, b: 0.31764707, a: 0}
-    - _HighlightColor: {r: 0.65882355, g: 0.97647065, b: 0.5647059, a: 1}
-    - _Highlight_Color: {r: 0.53670967, g: 1, b: 0, a: 0}
-    - _Outline_Color: {r: 0.29411766, g: 0.43529415, b: 0.29803923, a: 1}
-    - _Shadows_Color: {r: 0.29411766, g: 0.43529415, b: 0.29803923, a: 0}
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &7523208459516627033
+--- !u!114 &8486015762226685810
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
