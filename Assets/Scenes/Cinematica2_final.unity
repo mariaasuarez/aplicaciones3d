@@ -272,7 +272,6 @@ GameObject:
   - component: {fileID: 88858812}
   - component: {fileID: 88858811}
   - component: {fileID: 88858810}
-  - component: {fileID: 88858809}
   - component: {fileID: 88858814}
   m_Layer: 0
   m_Name: Camera
@@ -281,19 +280,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &88858809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 88858808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1de05cdf363515a429482c854d4b091a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tiempo: 20
 --- !u!114 &88858810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,8 +391,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88858808}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.013871761, y: 0.80206615, z: -0.037551384, w: -0.59589213}
-  m_LocalPosition: {x: -5.582791, y: 0.30712393, z: 1.4497709}
+  m_LocalRotation: {x: -0.045036435, y: 0.96026796, z: -0.17735477, w: -0.21071896}
+  m_LocalPosition: {x: -6.2300005, y: 0.39999998, z: -1.8799999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2218,7 +2204,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1087113727}
   - component: {fileID: 1087113728}
-  - component: {fileID: 1087113726}
   - component: {fileID: 1087113725}
   - component: {fileID: 1087113724}
   m_Layer: 0
@@ -2277,19 +2262,6 @@ PlayableDirector:
     value: {fileID: 88858814}
   m_ExposedReferences:
     m_References: []
---- !u!114 &1087113726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087113723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1de05cdf363515a429482c854d4b091a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tiempo: 20
 --- !u!4 &1087113727
 Transform:
   m_ObjectHideFlags: 0

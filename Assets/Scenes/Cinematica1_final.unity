@@ -12145,11 +12145,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60.000004
+  near clip plane: 0.1
+  far clip plane: 5000
+  field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -12173,7 +12173,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946964784}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.22562848, y: -0.73345214, z: -0.4017871, w: 0.49970677}
+  m_LocalRotation: {x: -0.2547127, y: -0.70479596, z: -0.45322567, w: 0.48267037}
   m_LocalPosition: {x: 0.721, y: 0.298, z: 1.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12189,10 +12189,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1946964784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1de05cdf363515a429482c854d4b091a, type: 3}
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempo: 20
+  ShowDebugText: 0
+  ShowCameraFrustum: 1
+  IgnoreTimeScale: 0
+  WorldUpOverride: {fileID: 0}
+  ChannelMask: -1
+  UpdateMethod: 2
+  BlendUpdateMethod: 1
+  LensModeOverride:
+    Enabled: 0
+    DefaultMode: 2
+  DefaultBlend:
+    Style: 1
+    Time: 2
+    CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  CustomBlends: {fileID: 0}
 --- !u!4 &1949280586 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3133429536944118060, guid: 25cb56d59f80f614b9da0e9a36c48a05, type: 3}
@@ -12590,7 +12609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de05cdf363515a429482c854d4b091a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempo: 5
+  director: {fileID: 2038275610}
 --- !u!4 &2027969197
 Transform:
   m_ObjectHideFlags: 0
@@ -12615,9 +12634,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2038275612}
-  - component: {fileID: 2038275611}
   - component: {fileID: 2038275610}
   - component: {fileID: 2038275609}
+  - component: {fileID: 2038275613}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -12668,19 +12687,6 @@ PlayableDirector:
     value: {fileID: 1946964789}
   m_ExposedReferences:
     m_References: []
---- !u!114 &2038275611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2038275608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1de05cdf363515a429482c854d4b091a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tiempo: 20
 --- !u!4 &2038275612
 Transform:
   m_ObjectHideFlags: 0
@@ -12696,6 +12702,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 359}
+--- !u!114 &2038275613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038275608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Priority:
+    Enabled: 0
+    m_Value: 0
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
+  Target:
+    TrackingTarget: {fileID: 0}
+    LookAtTarget: {fileID: 0}
+    CustomLookAtTarget: 0
+  Lens:
+    FieldOfView: 60
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    ModeOverride: 0
+    PhysicalProperties:
+      GateFit: 2
+      SensorSize: {x: 21.946, y: 16.002}
+      LensShift: {x: 0, y: 0}
+      FocusDistance: 10
+      Iso: 200
+      ShutterSpeed: 0.005
+      Aperture: 16
+      BladeCount: 5
+      Curvature: {x: 2, y: 11}
+      BarrelClipping: 0.25
+      Anamorphism: 0
+  BlendHint: 0
 --- !u!1001 &2041559819
 PrefabInstance:
   m_ObjectHideFlags: 0
