@@ -6,10 +6,18 @@ public class PuzzleManagerVR : MonoBehaviour
     private int correctPieces = 0;
 
     [Header("Llave")]
-    public GameObject llavePrefab;
-    public Transform spawnLlave;
+    public GameObject llaveObjeto; //la llave que YA está en la escena
 
     private bool llaveAparecio = false;
+
+    private void Start()
+    {
+        //la llave debe estar apagada al iniciar
+        if (llaveObjeto != null)
+        {
+            llaveObjeto.SetActive(false);
+        }
+    }
 
     public void AddCorrectPiece()
     {
@@ -18,21 +26,22 @@ public class PuzzleManagerVR : MonoBehaviour
 
         if (correctPieces >= totalPieces && !llaveAparecio)
         {
-            SpawnKey();
+            ActivarLlave();
         }
     }
 
-    void SpawnKey()
+    void ActivarLlave()
     {
         llaveAparecio = true;
 
-        if (llavePrefab != null && spawnLlave != null)
+        if (llaveObjeto != null)
         {
-            Instantiate(llavePrefab, spawnLlave.position, spawnLlave.rotation);
+            llaveObjeto.SetActive(true);
+            Debug.Log("La llave apareció.");
         }
         else
         {
-            Debug.LogWarning("Falta asignar el prefab de la llave o el punto de aparición.");
+            Debug.LogWarning("No asignaste la llave en el inspector.");
         }
     }
 }
