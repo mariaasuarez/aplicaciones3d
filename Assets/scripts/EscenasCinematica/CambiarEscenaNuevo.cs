@@ -1,17 +1,18 @@
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
-public class CambiarEscenaNuevo : MonoBehaviour
+public class CambiarEscena : MonoBehaviour
 {
-    public float tiempo = 5f; // duración de la cinemática
+    public PlayableDirector director;
 
     void Start()
     {
-        Invoke("IrAlJuego", tiempo);
+        director.stopped += AlTerminar;
     }
 
-    void IrAlJuego()
+    void AlTerminar(PlayableDirector d)
     {
-        SceneManager.LoadScene("MapaCinematica_final");
+        SceneManager.LoadScene("MapaCinematica");
     }
 }
