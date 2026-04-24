@@ -2332,6 +2332,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowDebugText: 0
+  ShowCameraFrustum: 1
+  IgnoreTimeScale: 0
+  WorldUpOverride: {fileID: 0}
+  ChannelMask: -1
+  UpdateMethod: 2
+  BlendUpdateMethod: 1
+  LensModeOverride:
+    Enabled: 0
+    DefaultMode: 2
+  DefaultBlend:
+    Style: 1
+    Time: 2
+    CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  CustomBlends: {fileID: 0}
 --- !u!1 &986347464
 GameObject:
   m_ObjectHideFlags: 0
@@ -2744,7 +2764,7 @@ PrefabInstance:
     - target: {fileID: 564919494866128892, guid: 27325cb1e1664464793426a5242289e8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 82f1eb555cd49f448b3e06cb6397bec3, type: 2}
+      objectReference: {fileID: 2100000, guid: dd17f8f5fafc2ba46a86eb8b4669099a, type: 2}
     - target: {fileID: 919132149155446097, guid: 27325cb1e1664464793426a5242289e8, type: 3}
       propertyPath: m_Name
       value: old_pc
@@ -3912,7 +3932,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d8367cece3b5b94b9fefc8fddb97cb7, type: 2}
+  - {fileID: 2100000, guid: 06e6a600c90ac14428dbb689ab5c4ad4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -1,11 +1,15 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Importante para cambiar de escena
+using UnityEngine.SceneManagement; // Importante para cambiar escenas
+using UnityEngine.XR.Interaction.Toolkit; // Importante para VR
 
 public class CambioEscena : MonoBehaviour
 {
-    // Esta función la llamaremos desde el botón
-    public void CargarMapa(string nombreMapa)
+    // Escribe aquí el nombre exacto de tu escena de la cinemática
+    public string nombreDeLaEscena = "NombreDeTuEscena";
+
+    public void IrACinematica()
     {
-        SceneManager.LoadScene(nombreMapa);
+        // Esto carga la escena nueva
+        SceneManager.LoadScene(nombreDeLaEscena);
     }
 }
