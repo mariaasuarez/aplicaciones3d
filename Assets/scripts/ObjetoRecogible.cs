@@ -20,7 +20,6 @@ public class ObjetoRecogible : MonoBehaviour
     {
         if (accionRecoger != null)
         {
-            accionRecoger.action.Enable();
             accionRecoger.action.performed += IntentarRecoger;
         }
     }
@@ -30,7 +29,6 @@ public class ObjetoRecogible : MonoBehaviour
         if (accionRecoger != null)
         {
             accionRecoger.action.performed -= IntentarRecoger;
-            accionRecoger.action.Disable();
         }
     }
 
@@ -40,6 +38,9 @@ public class ObjetoRecogible : MonoBehaviour
 
         if (avisoRecoger != null)
             avisoRecoger.SetActive(false);
+
+        if (accionRecoger != null)
+            accionRecoger.action.Enable();
     }
 
     private void OnTriggerEnter(Collider other)
