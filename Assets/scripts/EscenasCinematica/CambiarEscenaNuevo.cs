@@ -13,6 +13,6 @@ public class CambiarEscena : MonoBehaviour
 
     void AlTerminar(PlayableDirector d)
     {
-        SceneManager.LoadScene("primermapa");
+        GestorCargasVR.Instancia.CargarEscena("primermapa");
     }
 }
