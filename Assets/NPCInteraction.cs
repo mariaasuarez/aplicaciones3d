@@ -1,17 +1,17 @@
-﻿using UnityEngine;
+using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
 public class NPCInteraction : MonoBehaviour
 {
-    [Header("UI de interacción")]
+    [Header("UI Interactuar")]
     public GameObject interactButtonObject;
 
-    [Header("UI de diálogo")]
-    public GameObject fullScreenDialogueUI;
+    [Header("UI Di�logo")]
+    public GameObject dialoguePanel;
     public TMP_Text dialogueText;
 
-    [Header("Botón continuar")]
+    [Header("Bot�n continuar")]
     public Button continueButton;
 
     [Header("Opciones")]
@@ -23,30 +23,26 @@ public class NPCInteraction : MonoBehaviour
     public TMP_Text optionText2;
     public TMP_Text optionText3;
 
-    [Header("Textos del NPC")]
-    [TextArea(2, 5)]
+    [Header("Textos")]
     public string initialDialogue;
-
-    [TextArea(2, 5)]
     public string finalDialogue;
 
-    [Header("Opciones del jugador")]
     public string option1;
     public string option2;
     public string option3;
 
-    [Header("Respuestas del NPC")]
-    [TextArea(2, 5)] public string response1;
-    [TextArea(2, 5)] public string response2;
-    [TextArea(2, 5)] public string response3;
+    public string response1;
+    public string response2;
+    public string response3;
 
     private bool playerInRange = false;
     private int dialogueState = 0;
+    private int playerCollidersInside = 0;
 
-    private void Start()
+    void Start()
     {
         interactButtonObject.SetActive(false);
-        fullScreenDialogueUI.SetActive(false);
+        dialoguePanel.SetActive(false);
 
         HideOptions();
 
@@ -54,13 +50,9 @@ public class NPCInteraction : MonoBehaviour
         continueButton.onClick.AddListener(ContinueDialogue);
     }
 
-    private int playerCollidersInside = 0;
-
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-
-        Debug.Log("ENTRÓ EL PLAYER: " + other.name);
 
         playerCollidersInside++;
 
@@ -71,8 +63,6 @@ public class NPCInteraction : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-
-        Debug.Log("SALIO EL PLAYER: " + other.name);
 
         playerCollidersInside--;
 
@@ -85,13 +75,12 @@ public class NPCInteraction : MonoBehaviour
         }
     }
 
-    // 🔥 BOTÓN INTERACTUAR
     public void Interact()
     {
         if (!playerInRange) return;
 
         interactButtonObject.SetActive(false);
-        fullScreenDialogueUI.SetActive(true);
+        dialoguePanel.SetActive(true);
 
         dialogueText.text = initialDialogue;
 
@@ -126,18 +115,15 @@ public class NPCInteraction : MonoBehaviour
     {
         HideOptions();
 
-        if (option == 1)
-            dialogueText.text = response1;
-        else if (option == 2)
-            dialogueText.text = response2;
-        else if (option == 3)
-            dialogueText.text = response3;
+        if (option == 1) dialogueText.text = response1;
+        if (option == 2) dialogueText.text = response2;
+        if (option == 3) dialogueText.text = response3;
 
         continueButton.gameObject.SetActive(true);
         dialogueState = 3;
     }
 
-    private void ShowOptions()
+    void ShowOptions()
     {
         optionButton1.SetActive(true);
         optionButton2.SetActive(true);
@@ -148,16 +134,16 @@ public class NPCInteraction : MonoBehaviour
         optionText3.text = option3;
     }
 
-    private void HideOptions()
+    void HideOptions()
     {
         optionButton1.SetActive(false);
         optionButton2.SetActive(false);
         optionButton3.SetActive(false);
     }
 
-    public void CloseDialogue()
+    void CloseDialogue()
     {
-        fullScreenDialogueUI.SetActive(false);
+        dialoguePanel.SetActive(false);
         HideOptions();
         dialogueState = 0;
 
