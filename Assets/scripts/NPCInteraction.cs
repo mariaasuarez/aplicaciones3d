@@ -45,9 +45,6 @@ public class NPCInteraction : MonoBehaviour
         dialoguePanel.SetActive(false);
 
         HideOptions();
-
-        continueButton.onClick.RemoveAllListeners();
-        continueButton.onClick.AddListener(ContinueDialogue);
     }
 
     private void OnTriggerEnter(Collider other)
