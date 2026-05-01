@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/inicio1.unity
     guid: df519b4a42f6b7942a67451d5a3fd6bb
@@ -29,9 +26,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cinematica2_final.unity
     guid: efa65edc95416d646bf8a9af508e11e0
-  - enabled: 0
-    path: Assets/Scenes/inicio.unity
-    guid: d8ad8443c4e633c4997fe5c3ae8fd07a
+  - enabled: 1
+    path: Assets/Scenes/Conecciones a cada escena.unity
+    guid: 3046d168d0aa104449218d9fc787ef23
+  - enabled: 1
+    path: Assets/Scenes/Minijuegos3.unity
+    guid: d636daca3802bdb4f980f2f29fa3b307
+  - enabled: 1
+    path: Assets/Scenes/minijandres.unity
+    guid: 5422720a9f2aca3428f7055cf6e3f9fc
+  - enabled: 1
+    path: Assets/Scenes/segundomapa.unity
+    guid: 44f254fa26a92bb49954445b0e007f76
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 39b489e8532f80440be2b21257f16a59, type: 2}
