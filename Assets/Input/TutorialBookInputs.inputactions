@@ -1,0 +1,75 @@
+{
+    "version": 1,
+    "name": "TutorialBookInputs",
+    "maps": [
+        {
+            "name": "Tutorial",
+            "id": "38aaf2a0-8073-4fb3-9a0d-94e77d382348",
+            "actions": [
+                {
+                    "name": "OpenClose",
+                    "type": "Button",
+                    "id": "dbf5ba82-f6fc-4e19-8e67-13296eaa8c66",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NextPage",
+                    "type": "Button",
+                    "id": "2df5b272-196b-41d0-a468-3ee98b16fafc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PrevPage",
+                    "type": "Button",
+                    "id": "be078cfc-f6c4-45a5-94fc-7b0c00bc0e90",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "bb46ef85-a9e3-41b2-9512-b0b2219f7d52",
+                    "path": "T",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenClose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62db137b-273c-468f-9e4a-eb4b175f1bb4",
+                    "path": "3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextPage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "72b1793a-c633-414d-af5b-023cd4e8833a",
+                    "path": "1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrevPage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
