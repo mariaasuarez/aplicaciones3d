@@ -4,19 +4,16 @@ using UnityEngine;
 /// Hace que el libro tutorial persista entre escenas.
 /// Ponlo en el mismo GameObject raíz (TutorialBook_Root).
 /// Solo existirá UNA instancia durante toda la partida.
+/// 
+/// NOTA: La lógica de Singleton se movió a TutorialBookController.
+/// Este script solo maneja el DontDestroyOnLoad.
 /// </summary>
 public class TutorialBookPersistent : MonoBehaviour
 {
-    private static TutorialBookPersistent instance;
-
     void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject); // elimina duplicado
-            return;
-        }
-        instance = this;
-        DontDestroyOnLoad(gameObject); // sobrevive al cambio de escena
+        // TutorialBookController ya maneja el Singleton.
+        // Este script solo garantiza que el GameObject sobreviva al cambio de escena.
+        DontDestroyOnLoad(gameObject);
     }
 }

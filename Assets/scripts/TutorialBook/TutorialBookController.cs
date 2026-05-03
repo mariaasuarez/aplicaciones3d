@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 /// <summary>
@@ -21,11 +22,17 @@ using TMPro;
 /// </summary>
 public class TutorialBookController : MonoBehaviour
 {
+    // ══════════════════════════════════════════
+    // SINGLETON – cualquier botón en cualquier escena puede llamarlo
+    // ══════════════════════════════════════════
+    public static TutorialBookController Instance { get; private set; }
+
+    // ─────────────────────────────────────────
     [Header("=== OBJETO DEL LIBRO ===")]
     [Tooltip("Arrastra aquí el BookCanvas desde la jerarquía")]
     public GameObject bookObject;
 
-    [Tooltip("Arrastra aquí el Main Camera del XR Origin")]
+    [Tooltip("Se rellena automáticamente en cada escena. Puedes dejarlo vacío.")]
     public Transform vrCamera;
 
     // ─────────────────────────────────────────
@@ -88,6 +95,17 @@ public class TutorialBookController : MonoBehaviour
     // UNITY EVENTS
     // ══════════════════════════════════════════
 
+    void Awake()
+    {
+        // Singleton: solo existe una instancia
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
     void Start()
     {
         // Cerrar libro al inicio
@@ -97,12 +115,11 @@ public class TutorialBookController : MonoBehaviour
             bookObject.transform.localScale = Vector3.zero;
         }
 
-        // Si no hay cámara asignada, buscarla automáticamente
-        if (vrCamera == null)
-        {
-            Camera cam = Camera.main;
-            if (cam != null) vrCamera = cam.transform;
-        }
+        // Buscar cámara inicial
+        RefreshCamera();
+
+        // Suscribirse al evento de carga de escena para actualizar la cámara
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
         // Registrar inputs VR
         if (openCloseAction != null)
@@ -125,6 +142,11 @@ public class TutorialBookController : MonoBehaviour
         if (openCloseAction != null) openCloseAction.action.performed -= _ => ToggleBook();
         if (nextPageAction != null) nextPageAction.action.performed -= _ => GoToNextPage();
         if (prevPageAction != null) prevPageAction.action.performed -= _ => GoToPrevPage();
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void Update()
@@ -152,16 +174,53 @@ public class TutorialBookController : MonoBehaviour
         }
 
         // ── LIBRO MIRA AL JUGADOR (suave) ─────────
+        // FIX: usamos (cámara - libro) para que la CARA del canvas apunte al jugador
         if (isOpen && bookObject != null && bookObject.activeSelf && vrCamera != null)
         {
             Vector3 dir = bookObject.transform.position - vrCamera.position;
             dir.y = 0;
             if (dir.sqrMagnitude > 0.001f)
             {
-                Quaternion targetRot = Quaternion.LookRotation(dir);
+                Quaternion targetRot = Quaternion.LookRotation(dir, Vector3.up);
                 bookObject.transform.rotation = Quaternion.Slerp(
                     bookObject.transform.rotation, targetRot, Time.deltaTime * 3f);
             }
+        }
+    }
+
+    // ══════════════════════════════════════════
+    // GESTIÓN DE ESCENAS
+    // ══════════════════════════════════════════
+
+    /// <summary>
+    /// Se llama automáticamente cada vez que se carga una nueva escena.
+    /// Espera un frame para que la escena esté inicializada y busca la cámara.
+    /// </summary>
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        StartCoroutine(RefreshCameraNextFrame());
+    }
+
+    private IEnumerator RefreshCameraNextFrame()
+    {
+        yield return null; // esperar un frame a que la escena esté lista
+        RefreshCamera();
+    }
+
+    /// <summary>
+    /// Busca Camera.main en la escena activa y actualiza vrCamera.
+    /// </summary>
+    private void RefreshCamera()
+    {
+        Camera cam = Camera.main;
+        if (cam != null)
+        {
+            vrCamera = cam.transform;
+        }
+        else
+        {
+            Debug.LogWarning("[TutorialBook] No se encontró Camera.main en la escena. " +
+                             "Asegúrate de que la cámara tiene el tag 'MainCamera'.");
         }
     }
 
@@ -177,21 +236,30 @@ public class TutorialBookController : MonoBehaviour
 
     public void OpenBook()
     {
-        if (bookObject == null || vrCamera == null) return;
+        if (bookObject == null || vrCamera == null)
+        {
+            RefreshCamera(); // último intento de encontrar la cámara
+            if (vrCamera == null) return;
+        }
 
         isOpen = true;
         currentPage = 0;
 
-        // Posicionar frente al jugador
+        // ── Calcular dirección frente a la cámara ──
         Vector3 forward = vrCamera.forward;
         forward.y = 0;
         if (forward.sqrMagnitude < 0.001f) forward = Vector3.forward;
         forward.Normalize();
 
+        // Posicionar el libro frente al jugador
         bookObject.transform.position = vrCamera.position
                                         + forward * spawnDistance
                                         + Vector3.up * heightOffset;
-        bookObject.transform.rotation = Quaternion.LookRotation(forward);
+
+        // FIX PRINCIPAL: LookRotation con el vector HACIA la cámara (-forward)
+        // para que la cara visible del canvas quede de frente al jugador.
+        bookObject.transform.rotation = Quaternion.LookRotation(forward, Vector3.up);
+
         bookObject.transform.localScale = Vector3.zero;
         bookObject.SetActive(true);
 
@@ -231,7 +299,6 @@ public class TutorialBookController : MonoBehaviour
 
     private int TotalPages()
     {
-        // Usa el array más largo como referencia
         int l = leftPageSprites != null ? leftPageSprites.Length : 0;
         int r = rightPageSprites != null ? rightPageSprites.Length : 0;
         return Mathf.Max(l, r);
@@ -243,25 +310,17 @@ public class TutorialBookController : MonoBehaviour
 
     private void UpdatePage()
     {
-        // Página izquierda
         if (leftPageImage != null && leftPageSprites != null
             && currentPage < leftPageSprites.Length)
-        {
             leftPageImage.sprite = leftPageSprites[currentPage];
-        }
 
-        // Página derecha
         if (rightPageImage != null && rightPageSprites != null
             && currentPage < rightPageSprites.Length)
-        {
             rightPageImage.sprite = rightPageSprites[currentPage];
-        }
 
-        // Número de página
         if (pageNumberText != null)
             pageNumberText.text = $"{currentPage + 1}  /  {TotalPages()}";
 
-        // Mostrar / ocultar botones de navegación
         if (prevButton != null) prevButton.SetActive(currentPage > 0);
         if (nextButton != null) nextButton.SetActive(currentPage < TotalPages() - 1);
     }
@@ -300,7 +359,6 @@ public class TutorialBookController : MonoBehaviour
         float slideDir = goingForward ? -1f : 1f;
         Vector3 originalPos = bookObject.transform.localPosition;
 
-        // Slide + fade out
         while (t < 1f)
         {
             t += Time.deltaTime / duration;
@@ -310,10 +368,8 @@ public class TutorialBookController : MonoBehaviour
             yield return null;
         }
 
-        // Cambiar contenido en el momento invisible
         UpdatePage();
 
-        // Slide + fade in desde el lado opuesto
         t = 0f;
         bookObject.transform.localPosition = originalPos
             + new Vector3(-slideDir * 40f, 0f, 0f);

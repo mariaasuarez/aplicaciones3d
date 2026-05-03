@@ -597,7 +597,7 @@ Transform:
   m_GameObject: {fileID: 791142877}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -4}
+  m_LocalPosition: {x: 0, y: 1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1240,7 +1240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bookObject: {fileID: 763469447}
-  vrCamera: {fileID: 791142880}
+  vrCamera: {fileID: 0}
   leftPageImage: {fileID: 28912445}
   rightPageImage: {fileID: 162932472}
   leftPageSprites:
@@ -1263,7 +1263,7 @@ MonoBehaviour:
   openCloseAction: {fileID: 0}
   nextPageAction: {fileID: 0}
   prevPageAction: {fileID: 0}
-  spawnDistance: 3
+  spawnDistance: 1
   heightOffset: 0
   appearSpeed: 8
 --- !u!4 &1779585995
@@ -1275,8 +1275,8 @@ Transform:
   m_GameObject: {fileID: 1779585992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -0.5}
+  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 763469448}
