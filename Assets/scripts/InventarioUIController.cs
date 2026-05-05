@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class InventarioUIController : MonoBehaviour
@@ -8,40 +7,12 @@ public class InventarioUIController : MonoBehaviour
     public GameObject panelInventario;
     public Image iconoInventario;
 
-    [Header("Input")]
-    public InputActionReference abrirInventarioAction;
-
-    private bool inventarioAbierto = false;
-
-    private void OnEnable()
-    {
-        if (abrirInventarioAction != null)
-        {
-            abrirInventarioAction.action.Enable();
-            abrirInventarioAction.action.performed += ToggleInventario;
-            Debug.Log("Acción de inventario habilitada");
-        }
-        else
-        {
-            Debug.LogWarning("No se asignó abrirInventarioAction");
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (abrirInventarioAction != null)
-        {
-            abrirInventarioAction.action.performed -= ToggleInventario;
-            abrirInventarioAction.action.Disable();
-        }
-    }
-
     private void Start()
     {
         if (panelInventario != null)
         {
-            panelInventario.SetActive(false);
-            Debug.Log("Panel inventario oculto al inicio");
+            panelInventario.SetActive(true);
+            Debug.Log("Inventario fijo visible arriba");
         }
         else
         {
@@ -49,16 +20,20 @@ public class InventarioUIController : MonoBehaviour
         }
     }
 
-    private void ToggleInventario(InputAction.CallbackContext context)
+    public void MostrarIcono(Sprite nuevoIcono)
     {
-        Debug.Log("Se ejecutó ToggleInventario");
-
-        inventarioAbierto = !inventarioAbierto;
-
-        if (panelInventario != null)
+        if (iconoInventario != null)
         {
-            panelInventario.SetActive(inventarioAbierto);
-            Debug.Log("Inventario abierto: " + inventarioAbierto);
+            iconoInventario.sprite = nuevoIcono;
+            iconoInventario.enabled = true;
+        }
+    }
+
+    public void OcultarIcono()
+    {
+        if (iconoInventario != null)
+        {
+            iconoInventario.enabled = false;
         }
     }
 }

@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class NPCInteraction : MonoBehaviour
 {
+    [Header("Canvas de ESTE NPC")]
+    public GameObject canvasNPC;
+
     [Header("UI Interactuar")]
     public GameObject interactButtonObject;
 
@@ -41,9 +44,9 @@ public class NPCInteraction : MonoBehaviour
 
     void Start()
     {
+        canvasNPC.SetActive(false);
         interactButtonObject.SetActive(false);
         dialoguePanel.SetActive(false);
-
         HideOptions();
     }
 
@@ -52,7 +55,6 @@ public class NPCInteraction : MonoBehaviour
         if (!other.CompareTag("Player")) return;
 
         playerCollidersInside++;
-
         playerInRange = true;
         interactButtonObject.SetActive(true);
     }
@@ -67,15 +69,17 @@ public class NPCInteraction : MonoBehaviour
         {
             playerCollidersInside = 0;
             playerInRange = false;
-            interactButtonObject.SetActive(false);
             CloseDialogue();
         }
     }
 
     public void Interact()
     {
+        Debug.Log("Interactuando con: " + gameObject.name);
+
         if (!playerInRange) return;
 
+        canvasNPC.SetActive(true);
         interactButtonObject.SetActive(false);
         dialoguePanel.SetActive(true);
 
@@ -140,11 +144,14 @@ public class NPCInteraction : MonoBehaviour
 
     void CloseDialogue()
     {
+        canvasNPC.SetActive(false);
         dialoguePanel.SetActive(false);
         HideOptions();
         dialogueState = 0;
 
         if (playerInRange)
             interactButtonObject.SetActive(true);
+        else
+            interactButtonObject.SetActive(false);
     }
 }
