@@ -473,7 +473,7 @@ Transform:
   m_GameObject: {fileID: 11361695}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.316, z: 0}
+  m_LocalPosition: {x: 0, y: -1.24, z: 0}
   m_LocalScale: {x: 35.14722, y: 1, z: 38.84267}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -670,7 +670,7 @@ Transform:
   m_LocalScale: {x: 210.16702, y: 210.16702, z: 210.16702}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1049253605}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &160104561
 MeshRenderer:
@@ -756,7 +756,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1049253605}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &331470762
 MeshRenderer:
@@ -854,7 +854,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1049253605}
   m_LocalEulerAnglesHint: {x: 0, y: 68.418, z: 0}
 --- !u!23 &395065443
 MeshRenderer:
@@ -943,7 +943,7 @@ Transform:
   m_LocalScale: {x: 97.7358, y: 97.7358, z: 97.7358}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1049253605}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &714670149
 MeshRenderer:
@@ -1415,6 +1415,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1049253605 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0d3556551f8ce8f408f34ae032fd4d7a, type: 3}
+  m_PrefabInstance: {fileID: 1831568616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1189528786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,7 +1451,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1049253605}
   m_LocalEulerAnglesHint: {x: 0, y: 68.418, z: 0}
 --- !u!23 &1189528788
 MeshRenderer:
@@ -1535,7 +1540,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1049253605}
   m_LocalEulerAnglesHint: {x: 0, y: 0.068, z: 0}
 --- !u!23 &1519616254
 MeshRenderer:
@@ -1745,7 +1750,7 @@ Transform:
   m_LocalScale: {x: 97.7358, y: 97.7358, z: 97.7358}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1049253605}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1702206927
 MeshRenderer:
@@ -3500,7 +3505,7 @@ Transform:
   m_LocalScale: {x: 210.16702, y: 210.16702, z: 210.16702}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1049253605}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1970648470
 MeshRenderer:
