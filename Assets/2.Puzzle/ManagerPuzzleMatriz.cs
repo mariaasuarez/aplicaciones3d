@@ -1,0 +1,102 @@
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using TMPro;
+
+[System.Serializable]
+public class PatronFigura
+{
+    public string nombreLetra;
+    [Tooltip("Marca con un 'check' los espacios que DEBEN tener esfera")]
+    public bool[] celdas = new bool[9];
+}
+
+public class ManagerPuzzleMatriz : MonoBehaviour
+{
+    [Header("Configuración de Niveles")]
+    [Tooltip("Las figuras en orden (ej. U, M, N, G)")]
+    public List<PatronFigura> niveles;
+    private int nivelActualIndex = 0;
+
+    [Header("Conexiones de la Escena")]
+    [Tooltip("Arrastra aquí los 9 cubos que tienen el XR Socket Interactor")]
+    public UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor[] tableroSockets = new UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor[9];
+
+    [Header("Interfaz de Usuario")]
+    [Tooltip("Arrastra aquí el objeto de texto (TextMeshPro) que verá el usuario")]
+    public TextMeshProUGUI textoGuiaLetra;
+    public string prefijoTexto = "Figura a armar: ";
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip sonidoAcierto;
+    public AudioClip sonidoError;
+    public AudioClip sonidoVictoriaFinal;
+
+    // ¡AQUÍ ESTÁ LA SOLUCIÓN! Esta función hace que el texto cambie en cuanto le das a Play
+    void Start()
+    {
+        ActualizarTextoPantalla();
+    }
+
+    public void VerificarTablero()
+    {
+        if (nivelActualIndex >= niveles.Count) return;
+
+        PatronFigura figuraActual = niveles[nivelActualIndex];
+        bool esCorrecto = true;
+
+        for (int i = 0; i < 9; i++)
+        {
+            bool tieneEsfera = tableroSockets[i].hasSelection;
+
+            if (tieneEsfera != figuraActual.celdas[i])
+            {
+                esCorrecto = false;
+                break;
+            }
+        }
+
+        if (esCorrecto)
+        {
+            AvanzarNivel();
+        }
+        else
+        {
+            Fallar();
+        }
+    }
+
+    private void AvanzarNivel()
+    {
+        nivelActualIndex++;
+
+        if (nivelActualIndex >= niveles.Count)
+        {
+            if (audioSource && sonidoVictoriaFinal) audioSource.PlayOneShot(sonidoVictoriaFinal);
+            if (textoGuiaLetra != null) textoGuiaLetra.text = "¡PUZZLE COMPLETADO!";
+            UnityEngine.Debug.Log("¡Completaste todas las letras!");
+        }
+        else
+        {
+            if (audioSource && sonidoAcierto) audioSource.PlayOneShot(sonidoAcierto);
+            ActualizarTextoPantalla();
+            UnityEngine.Debug.Log("¡Figura correcta! Siguiente letra: " + niveles[nivelActualIndex].nombreLetra);
+        }
+    }
+
+    private void ActualizarTextoPantalla()
+    {
+        if (textoGuiaLetra != null && nivelActualIndex < niveles.Count)
+        {
+            // Cambia el texto para mostrar el nombre que pusiste en la lista (U, M, N, G)
+            textoGuiaLetra.text = prefijoTexto + niveles[nivelActualIndex].nombreLetra;
+        }
+    }
+
+    private void Fallar()
+    {
+        if (audioSource && sonidoError) audioSource.PlayOneShot(sonidoError);
+        UnityEngine.Debug.Log("Patrón incorrecto, revisa la figura.");
+    }
+}
