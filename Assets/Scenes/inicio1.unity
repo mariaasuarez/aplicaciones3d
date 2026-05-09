@@ -17231,24 +17231,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuObjeto: {fileID: 1953547083}
-  botonBumper:
+  botonMenu:
     m_UseReference: 0
     m_Action:
-      m_Name: Boton Bumper
+      m_Name: Boton Menu
       m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 282bf367-480c-4e07-a76c-9016e4d7db39
+      m_ExpectedControlType: Button
+      m_Id: 15b1f3e5-c673-470b-b75f-1f356810c19e
       m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: 2c69a7ae-4de8-4fc6-a176-a186fa4fb616
-        m_Path: <XRController>{LeftHand}/gripPressed
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Boton Bumper
-        m_Flags: 0
+      m_Interactions: Press
+      m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
 --- !u!1001 &1742740941
