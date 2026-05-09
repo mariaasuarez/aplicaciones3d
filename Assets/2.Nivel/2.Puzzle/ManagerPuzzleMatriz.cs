@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -33,9 +34,24 @@ public class ManagerPuzzleMatriz : MonoBehaviour
     public AudioClip sonidoError;
     public AudioClip sonidoVictoriaFinal;
 
-    // ¡AQUÍ ESTÁ LA SOLUCIÓN! Esta función hace que el texto cambie en cuanto le das a Play
+    [Header("Efectos Mágicos (Recompensa)")]
+    [Tooltip("El objeto que aparecerá al completar todas las figuras")]
+    public GameObject recompensaObjeto;
+    [Tooltip("Tiempo en segundos que tarda en aparecer")]
+    public float duracionAparicion = 1.0f;
+    [Tooltip("(Opcional) Partículas al ganar")]
+    public GameObject particulasMagicasPrefab;
+
+    private Vector3 escalaOriginalRecompensa;
+
     void Start()
     {
+        if (recompensaObjeto != null)
+        {
+            escalaOriginalRecompensa = recompensaObjeto.transform.localScale;
+            recompensaObjeto.SetActive(false);
+        }
+
         ActualizarTextoPantalla();
     }
 
@@ -76,6 +92,11 @@ public class ManagerPuzzleMatriz : MonoBehaviour
             if (audioSource && sonidoVictoriaFinal) audioSource.PlayOneShot(sonidoVictoriaFinal);
             if (textoGuiaLetra != null) textoGuiaLetra.text = "¡PUZZLE COMPLETADO!";
             UnityEngine.Debug.Log("¡Completaste todas las letras!");
+
+            if (recompensaObjeto != null)
+            {
+                StartCoroutine(AparecerObjetoMagicamente());
+            }
         }
         else
         {
@@ -89,7 +110,6 @@ public class ManagerPuzzleMatriz : MonoBehaviour
     {
         if (textoGuiaLetra != null && nivelActualIndex < niveles.Count)
         {
-            // Cambia el texto para mostrar el nombre que pusiste en la lista (U, M, N, G)
             textoGuiaLetra.text = prefijoTexto + niveles[nivelActualIndex].nombreLetra;
         }
     }
@@ -98,5 +118,31 @@ public class ManagerPuzzleMatriz : MonoBehaviour
     {
         if (audioSource && sonidoError) audioSource.PlayOneShot(sonidoError);
         UnityEngine.Debug.Log("Patrón incorrecto, revisa la figura.");
+    }
+
+    private IEnumerator AparecerObjetoMagicamente()
+    {
+        if (particulasMagicasPrefab != null)
+        {
+            Instantiate(particulasMagicasPrefab, recompensaObjeto.transform.position, Quaternion.identity);
+        }
+
+        recompensaObjeto.transform.localScale = Vector3.zero;
+        recompensaObjeto.SetActive(true);
+
+        float tiempoPasado = 0f;
+        while (tiempoPasado < duracionAparicion)
+        {
+            tiempoPasado += Time.deltaTime;
+            float porcentaje = tiempoPasado / duracionAparicion;
+
+            float crecimientoSuave = Mathf.SmoothStep(0f, 1f, porcentaje);
+
+            recompensaObjeto.transform.localScale = Vector3.Lerp(Vector3.zero, escalaOriginalRecompensa, crecimientoSuave);
+
+            yield return null;
+        }
+
+        recompensaObjeto.transform.localScale = escalaOriginalRecompensa;
     }
 }
