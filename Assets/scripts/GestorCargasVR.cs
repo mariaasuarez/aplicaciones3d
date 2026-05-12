@@ -40,11 +40,13 @@ public class GestorCargasVR : MonoBehaviour
 
     IEnumerator ProcesoDeCarga(string nombreEscena)
     {
+        yield return null;
+
         Camera camaraVR = Camera.main;
-        if (camaraVR != null)
+        if (camaraVR != null && canvasCarga != null)
         {
             canvasCarga.transform.SetParent(camaraVR.transform);
-            canvasCarga.transform.localPosition = new Vector3(0, 0, 0.4f); // A 40 cm de la cara
+            canvasCarga.transform.localPosition = new Vector3(0, 0, 0.4f);
             canvasCarga.transform.localRotation = Quaternion.identity;
         }
 
