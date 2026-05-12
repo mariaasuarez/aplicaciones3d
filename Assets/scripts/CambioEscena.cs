@@ -1,11 +1,23 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Importante para cambiar de escena
+using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class CambioEscena : MonoBehaviour
 {
-    // Esta función la llamaremos desde el botón
-    public void CargarMapa(string nombreMapa)
+    [Tooltip("Escribe aquí el nombre de la escena de destino")]
+    public string nombreDeLaEscena = "NombreDeTuEscena";
+
+    public void IrACinematica()
     {
-        SceneManager.LoadScene(nombreMapa);
+        if (GestorCargasVR.Instancia != null)
+        {
+            GestorCargasVR.Instancia.CargarEscena(nombreDeLaEscena);
+        }
+        else
+        {
+            Debug.LogError("¡Error! No encontré el GestorCargasVR en la escena. Asegúrate de que el objeto existe.");
+
+            //SceneManager.LoadScene(nombreDeLaEscena);
+        }
     }
 }

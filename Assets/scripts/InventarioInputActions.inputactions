@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "name": "InventarioInputActions",
+    "maps": [
+        {
+            "name": "XRUI",
+            "id": "7719acb2-03f4-454d-a9a1-06eb84ae8a81",
+            "actions": [
+                {
+                    "name": "AbrirInventario",
+                    "type": "Button",
+                    "id": "cc369f42-444e-45e2-a647-46e0189f99dc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ff93db0e-4baf-40c6-b497-574708fd4ef9",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AbrirInventario",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e2eff93f-cd50-43cc-bfda-fa9e5b2b493f",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AbrirInventario",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
