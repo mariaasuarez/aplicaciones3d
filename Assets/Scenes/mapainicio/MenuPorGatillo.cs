@@ -1,33 +1,46 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MenuPorGatillo : MonoBehaviour
+public class MenuToggleVR : MonoBehaviour
 {
-    // El objeto del menú que quieres mostrar/ocultar
+    [Header("Configuración del Menú")]
     public GameObject menuObjeto;
 
-    // La acción del botón (Bumper/Gatillo)
-    public InputActionProperty botonBumper;
+    [Header("Acción de Entrada")]
+    [Tooltip("Asigna aquí la acción 'Menu' o 'MenuButton' del control izquierdo")]
+    public InputActionProperty botonMenu;
 
     void Start()
     {
-        // Al empezar, nos aseguramos de que el menú esté oculto
-        if (menuObjeto != null) menuObjeto.SetActive(false);
+        // Aseguramos que el menú empiece oculto
+        if (menuObjeto != null)
+            menuObjeto.SetActive(false);
     }
 
     void Update()
     {
-        // Si el botón está siendo presionado ahora mismo
-        if (botonBumper.action.IsPressed())
+        // 'WasPressedThisFrame' detecta solo el momento inicial del clic, 
+        // no importa cuánto tiempo dejes presionado el botón después.
+        if (botonMenu.action.WasPressedThisFrame())
         {
-            if (!menuObjeto.activeSelf) menuObjeto.SetActive(true);
-        }
-        else // Si el botón NO está presionado (lo soltaste)
-        {
-            if (menuObjeto.activeSelf) menuObjeto.SetActive(false);
+            AlternarMenu();
         }
     }
 
-    private void OnEnable() => botonBumper.action.Enable();
-    private void OnDisable() => botonBumper.action.Disable();
+    void AlternarMenu()
+    {
+        if (menuObjeto != null)
+        {
+            // El símbolo '!' invierte el estado actual:
+            // Si está activo (true), lo vuelve falso. Si está falso, lo vuelve true.
+            bool nuevoEstado = !menuObjeto.activeSelf;
+            menuObjeto.SetActive(nuevoEstado);
+
+            // Tip profesional: Si quieres que el menú aparezca frente al jugador
+            // podrías añadir aquí el código para posicionarlo.
+        }
+    }
+
+    private void OnEnable() => botonMenu.action.Enable();
+    private void OnDisable() => botonMenu.action.Disable();
 }
