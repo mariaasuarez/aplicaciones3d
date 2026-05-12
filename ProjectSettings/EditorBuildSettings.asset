@@ -11,18 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cinematica1_final.unity
     guid: 0f80733c43220bb469c23dbd771a6093
-  - enabled: 0
-    path: Assets/Scenes/MapaCinematica.unity
-    guid: c19b28f11a5e1ce4c8167b7e3d90b906
   - enabled: 1
     path: Assets/Scenes/primermapa.unity
     guid: a92ec5c07cfba58439be14509a14ab60
   - enabled: 1
     path: Assets/Scenes/primeros minijuegos/minijuego1.unity
     guid: b5edefd1311cd0a46acee1de2a595e9f
-  - enabled: 1
-    path: Assets/Scenes/tercermapa.unity
-    guid: b48f02ac1727d804d91c916d6bd2d15c
   - enabled: 1
     path: Assets/Scenes/Cinematica2_final.unity
     guid: efa65edc95416d646bf8a9af508e11e0
