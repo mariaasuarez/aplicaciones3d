@@ -42,7 +42,22 @@ public class ManagerPuzzleMatriz : MonoBehaviour
     [Tooltip("(Opcional) Partículas al ganar")]
     public GameObject particulasMagicasPrefab;
 
+    [Header("Interacción Final (Cambio Escena)")]
+    [Tooltip("El objeto/Canvas que contiene tu botón de 'Interactuar'")]
+    public GameObject botonInteractuarUI;
+    [Tooltip("Arrastra aquí la Main Camera de tu XR Origin")]
+    public Transform jugadorVR;
+    [Tooltip("El objeto que sirve como centro para el radio de interacción")]
+    public Transform puntoDeInteraccion;
+    [Tooltip("Radio en metros para que el botón aparezca")]
+    public float radioDeInteraccion = 1.5f;
+
+    [Header("Guía Visual (Brillo Destino)")]
+    [Tooltip("El objeto que contiene la luz/partículas que brillará a lo lejos al ganar")]
+    public GameObject efectoBrilloDestino;
+
     private Vector3 escalaOriginalRecompensa;
+    private bool juegoTerminado = false;
 
     void Start()
     {
@@ -51,8 +66,27 @@ public class ManagerPuzzleMatriz : MonoBehaviour
             escalaOriginalRecompensa = recompensaObjeto.transform.localScale;
             recompensaObjeto.SetActive(false);
         }
+        if (botonInteractuarUI != null) botonInteractuarUI.SetActive(false);
+        if (efectoBrilloDestino != null) efectoBrilloDestino.SetActive(false);
 
         ActualizarTextoPantalla();
+    }
+
+    void Update()
+    {
+        if (juegoTerminado && recompensaObjeto != null && recompensaObjeto.activeSelf && jugadorVR != null && puntoDeInteraccion != null)
+        {
+            float distancia = Vector3.Distance(jugadorVR.position, puntoDeInteraccion.position);
+
+            if (distancia <= radioDeInteraccion)
+            {
+                if (!botonInteractuarUI.activeSelf) botonInteractuarUI.SetActive(true);
+            }
+            else
+            {
+                if (botonInteractuarUI.activeSelf) botonInteractuarUI.SetActive(false);
+            }
+        }
     }
 
     public void VerificarTablero()
@@ -92,6 +126,9 @@ public class ManagerPuzzleMatriz : MonoBehaviour
             if (audioSource && sonidoVictoriaFinal) audioSource.PlayOneShot(sonidoVictoriaFinal);
             if (textoGuiaLetra != null) textoGuiaLetra.text = "¡PUZZLE COMPLETADO!";
             UnityEngine.Debug.Log("¡Completaste todas las letras!");
+
+            juegoTerminado = true;
+            if (efectoBrilloDestino != null) efectoBrilloDestino.SetActive(true);
 
             if (recompensaObjeto != null)
             {
