@@ -1,4 +1,4 @@
-using System.Collections; // Necesario para las Corrutinas
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -31,6 +31,22 @@ public class MinijuegoMemoriaManager : MonoBehaviour
     [Tooltip("Arrastra aquí un prefab de partículas para que explote al ganar")]
     public GameObject particulasMagicasPrefab;
 
+    [Header("Interacción Final (Cambio Escena)")]
+    [Tooltip("El objeto/Canvas que contiene tu botón de 'Interactuar'")]
+    public GameObject botonInteractuarUI;
+    [Tooltip("Arrastra aquí la Main Camera de tu XR Origin")]
+    public Transform jugadorVR;
+    [Tooltip("El objeto que sirve como centro para el radio de interacción")]
+    public Transform puntoDeInteraccion;
+    [Tooltip("Radio en metros para que el botón aparezca")]
+    public float radioDeInteraccion = 1.5f;
+
+    // --- NUEVO: EFECTO DE BRILLO A DISTANCIA ---
+    [Header("Guía Visual (Brillo Destino)")]
+    [Tooltip("El objeto que contiene la luz/partículas que brillará a lo lejos al ganar")]
+    public GameObject efectoBrilloDestino;
+    // ------------------------------------------
+
     private List<Texture2D> texturasSeleccionadas = new List<Texture2D>();
     private bool juegoTerminado = false;
     private Vector3 escalaOriginalRecompensa;
@@ -43,7 +59,35 @@ public class MinijuegoMemoriaManager : MonoBehaviour
             recompensaObjeto.SetActive(false);
         }
 
+        if (botonInteractuarUI != null)
+        {
+            botonInteractuarUI.SetActive(false);
+        }
+
+        // NUEVO: Aseguramos que el brillo empiece apagado
+        if (efectoBrilloDestino != null)
+        {
+            efectoBrilloDestino.SetActive(false);
+        }
+
         IniciarNuevoJuego();
+    }
+
+    void Update()
+    {
+        if (juegoTerminado && recompensaObjeto != null && recompensaObjeto.activeSelf && jugadorVR != null && puntoDeInteraccion != null)
+        {
+            float distancia = Vector3.Distance(jugadorVR.position, puntoDeInteraccion.position);
+
+            if (distancia <= radioDeInteraccion)
+            {
+                if (!botonInteractuarUI.activeSelf) botonInteractuarUI.SetActive(true);
+            }
+            else
+            {
+                if (botonInteractuarUI.activeSelf) botonInteractuarUI.SetActive(false);
+            }
+        }
     }
 
     public void IniciarNuevoJuego()
@@ -129,6 +173,12 @@ public class MinijuegoMemoriaManager : MonoBehaviour
 
         if (tapaAtril != null) tapaAtril.transform.Rotate(-90, 0, 0);
 
+        // NUEVO: Encender el brillo a la distancia
+        if (efectoBrilloDestino != null)
+        {
+            efectoBrilloDestino.SetActive(true);
+        }
+
         if (recompensaObjeto != null)
         {
             StartCoroutine(AparecerObjetoMagicamente());
@@ -155,7 +205,7 @@ public class MinijuegoMemoriaManager : MonoBehaviour
 
             recompensaObjeto.transform.localScale = Vector3.Lerp(Vector3.zero, escalaOriginalRecompensa, crecimientoSuave);
 
-            yield return null; 
+            yield return null;
         }
         recompensaObjeto.transform.localScale = escalaOriginalRecompensa;
     }
