@@ -47,8 +47,13 @@ public class InventarioSistema : MonoBehaviour
 
     public void ActualizarUI()
     {
-        fragmentoUI1.SetActive(tieneFragmento1);
-        fragmentoUI2.SetActive(tieneFragmento2);
-        fragmentoUI3.SetActive(tieneFragmento3);
+        if (fragmentoUI1 != null)
+            fragmentoUI1.SetActive(tieneFragmento1);
+
+        if (fragmentoUI2 != null)
+            fragmentoUI2.SetActive(tieneFragmento2);
+
+        if (fragmentoUI3 != null)
+            fragmentoUI3.SetActive(tieneFragmento3);
     }
 }

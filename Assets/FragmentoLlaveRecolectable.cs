@@ -1,46 +1,61 @@
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.InputSystem;
 
 public class FragmentoLlaveRecolectable : MonoBehaviour
 {
     public int numeroFragmento = 1;
 
-    private XRGrabInteractable grab;
-    private bool yaRecogido = false;
+    private bool jugadorCerca = false;
+    private bool recogido = false;
 
-    private void Awake()
+    private void Update()
     {
-        grab = GetComponent<XRGrabInteractable>();
+        if (!jugadorCerca || recogido) return;
+
+        bool gatilloDerecho =
+            Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame;
+
+        bool triggerVR =
+            Gamepad.current != null && Gamepad.current.rightTrigger.wasPressedThisFrame;
+
+        if (gatilloDerecho || triggerVR)
+        {
+            Recoger();
+        }
     }
 
-    private void OnEnable()
+    private void Recoger()
     {
-        grab.selectEntered.AddListener(RecogerFragmento);
-        grab.hoverEntered.AddListener(JugadorApuntando);
-    }
+        recogido = true;
 
-    private void OnDisable()
-    {
-        grab.selectEntered.RemoveListener(RecogerFragmento);
-        grab.hoverEntered.RemoveListener(JugadorApuntando);
-    }
+        Debug.Log("RECOGIÓ FRAGMENTO " + numeroFragmento);
 
-    private void JugadorApuntando(HoverEnterEventArgs args)
-    {
-        Debug.Log("Jugador está apuntando/tocando la llave");
-    }
-
-    private void RecogerFragmento(SelectEnterEventArgs args)
-    {
-        if (yaRecogido) return;
-
-        yaRecogido = true;
-
-        Debug.Log("Llave recogida");
-
-        InventarioSistema.Instance.RecogerFragmento(numeroFragmento);
+        if (InventarioSistema.Instance != null)
+        {
+            InventarioSistema.Instance.RecogerFragmento(numeroFragmento);
+        }
+        else
+        {
+            Debug.LogWarning("No existe InventarioSistema en la escena.");
+        }
 
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            jugadorCerca = true;
+            Debug.Log("Jugador cerca del fragmento");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            jugadorCerca = false;
+        }
     }
 }
