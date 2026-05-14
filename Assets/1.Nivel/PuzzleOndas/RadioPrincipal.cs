@@ -1,25 +1,28 @@
 using UnityEngine;
-using TMPro; // Necesario para usar el InputField de TextMeshPro
+using TMPro; // Obligatorio para TextMeshPro
 using UnityEngine.Events;
 
 public class RadioPrincipal : MonoBehaviour
 {
     [Header("Configuración del Código")]
-    public string codigoCorrecto = "123"; // El número que debe coincidir
-    public TMP_InputField campoDeTexto;   // Arrastra aquí tu InputField
+    public string codigoCorrecto = "1509";
+    public TMP_InputField campoDeTexto; // <-- Asegúrate que diga TMP_
+
+    [Header("UI de Éxito")]
+    public GameObject imagenVictoria;
 
     [Header("Acciones al Ganar")]
     public UnityEvent OnCodigoCorrecto;
 
     private bool yaGano = false;
 
-    // Esta función se llamará cada vez que el texto cambie o al darle Enter
+    // Conecta esta función al evento On Value Changed del InputField
     public void VerificarCodigo()
     {
         if (yaGano) return;
 
-        // Comparamos lo escrito con el código correcto
-        if (campoDeTexto.text == codigoCorrecto)
+        // Limpiamos espacios por si acaso y comparamos
+        if (campoDeTexto.text.Trim() == codigoCorrecto)
         {
             Exito();
         }
@@ -28,12 +31,14 @@ public class RadioPrincipal : MonoBehaviour
     void Exito()
     {
         yaGano = true;
-        Debug.Log("¡Código Correcto! Pasando de nivel...");
+        Debug.Log("¡LO LOGRASTE! Código correcto.");
 
-        // Bloqueamos el campo para que no sigan escribiendo
-        campoDeTexto.interactable = false;
+        if (campoDeTexto != null)
+            campoDeTexto.gameObject.SetActive(false);
 
-        // Ejecutamos lo que quieras (abrir puerta, cambiar escena, etc.)
+        if (imagenVictoria != null)
+            imagenVictoria.SetActive(true);
+
         OnCodigoCorrecto.Invoke();
     }
 }

@@ -9788,6 +9788,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036348453}
   m_Mesh: {fileID: 6871222903635677038, guid: 64de3bf87f7131c4fa1a9e7d81f42a99, type: 3}
+--- !u!1 &1046361029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1046361031}
+  - component: {fileID: 1046361030}
+  m_Layer: 0
+  m_Name: ManejadorMusica
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1046361030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046361029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c2f662003efec4b87729cb770cdb53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicaDeEsteMapa: {fileID: 8300000, guid: f4542b4ace9a11541b220e44ad4eaafe, type: 3}
+  volumen: 0.5
+  bucle: 1
+--- !u!4 &1046361031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046361029}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.445098, y: 0.6220761, z: 2.2370248}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1054121144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18794,8 +18841,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 731691227}
   m_HandleRect: {fileID: 1701420099}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 20
+  m_MinValue: -80
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -21574,3 +21621,4 @@ SceneRoots:
   - {fileID: 1871351442}
   - {fileID: 6910380025523152181}
   - {fileID: 689768024}
+  - {fileID: 1046361031}
