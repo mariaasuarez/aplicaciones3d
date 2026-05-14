@@ -1,16 +1,44 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FragmentoLlaveRecolectable : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public int numeroFragmento = 1;
 
-    // Update is called once per frame
+    public InputActionProperty triggerDerecho;
+
+    private bool jugadorCerca = false;
+
     void Update()
     {
-        
+        if (jugadorCerca)
+        {
+            if (triggerDerecho.action.WasPressedThisFrame())
+            {
+                RecogerFragmento();
+            }
+        }
+    }
+
+    void RecogerFragmento()
+    {
+        InventarioSistema.Instance.RecogerFragmento(numeroFragmento);
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            jugadorCerca = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            jugadorCerca = false;
+        }
     }
 }
