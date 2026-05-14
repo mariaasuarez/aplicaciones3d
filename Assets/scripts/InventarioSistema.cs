@@ -1,54 +1,54 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InventarioSistema : MonoBehaviour
 {
-    [Header("UI Fragmentos")]
-    public GameObject imagenFragmento1;
-    public GameObject imagenFragmento2;
-    public GameObject imagenFragmento3;
+    public static InventarioSistema Instance;
 
-    [Header("Estado del inventario")]
-    public bool tieneFragmento1 = false;
-    public bool tieneFragmento2 = false;
-    public bool tieneFragmento3 = false;
+    [Header("Fragmentos UI")]
+    public GameObject fragmentoUI1;
+    public GameObject fragmentoUI2;
+    public GameObject fragmentoUI3;
+
+    [Header("Estado")]
+    public bool tieneFragmento1;
+    public bool tieneFragmento2;
+    public bool tieneFragmento3;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Start()
     {
         ActualizarUI();
     }
 
-    public void RecogerFragmento(int idFragmento)
+    public void RecogerFragmento(int numeroFragmento)
     {
-        switch (idFragmento)
-        {
-            case 1:
-                tieneFragmento1 = true;
-                break;
-            case 2:
-                tieneFragmento2 = true;
-                break;
-            case 3:
-                tieneFragmento3 = true;
-                break;
-            default:
-                Debug.LogWarning("ID de fragmento no válido: " + idFragmento);
-                return;
-        }
+        if (numeroFragmento == 1)
+            tieneFragmento1 = true;
+
+        if (numeroFragmento == 2)
+            tieneFragmento2 = true;
+
+        if (numeroFragmento == 3)
+            tieneFragmento3 = true;
 
         ActualizarUI();
-        Debug.Log("Se recogió el fragmento: " + idFragmento);
     }
 
-    private void ActualizarUI()
+    public void ActualizarUI()
     {
-        if (imagenFragmento1 != null)
-            imagenFragmento1.SetActive(tieneFragmento1);
-
-        if (imagenFragmento2 != null)
-            imagenFragmento2.SetActive(tieneFragmento2);
-
-        if (imagenFragmento3 != null)
-            imagenFragmento3.SetActive(tieneFragmento3);
+        fragmentoUI1.SetActive(tieneFragmento1);
+        fragmentoUI2.SetActive(tieneFragmento2);
+        fragmentoUI3.SetActive(tieneFragmento3);
     }
 }
