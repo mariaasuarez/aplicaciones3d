@@ -1,44 +1,46 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class FragmentoLlaveRecolectable : MonoBehaviour
 {
     public int numeroFragmento = 1;
 
-    public InputActionProperty triggerDerecho;
+    private XRGrabInteractable grab;
+    private bool yaRecogido = false;
 
-    private bool jugadorCerca = false;
-
-    void Update()
+    private void Awake()
     {
-        if (jugadorCerca)
-        {
-            if (triggerDerecho.action.WasPressedThisFrame())
-            {
-                RecogerFragmento();
-            }
-        }
+        grab = GetComponent<XRGrabInteractable>();
     }
 
-    void RecogerFragmento()
+    private void OnEnable()
     {
+        grab.selectEntered.AddListener(RecogerFragmento);
+        grab.hoverEntered.AddListener(JugadorApuntando);
+    }
+
+    private void OnDisable()
+    {
+        grab.selectEntered.RemoveListener(RecogerFragmento);
+        grab.hoverEntered.RemoveListener(JugadorApuntando);
+    }
+
+    private void JugadorApuntando(HoverEnterEventArgs args)
+    {
+        Debug.Log("Jugador está apuntando/tocando la llave");
+    }
+
+    private void RecogerFragmento(SelectEnterEventArgs args)
+    {
+        if (yaRecogido) return;
+
+        yaRecogido = true;
+
+        Debug.Log("Llave recogida");
+
         InventarioSistema.Instance.RecogerFragmento(numeroFragmento);
+
         Destroy(gameObject);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            jugadorCerca = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            jugadorCerca = false;
-        }
     }
 }
