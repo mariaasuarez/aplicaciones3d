@@ -7,21 +7,34 @@ public class FragmentoLlaveRecolectable : MonoBehaviour
 
     private bool jugadorCerca = false;
     private bool recogido = false;
+    private bool triggerPresionadoAntes = false;
 
     private void Update()
     {
         if (!jugadorCerca || recogido) return;
 
-        bool gatilloDerecho =
-            Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame;
+        bool triggerDerechoAhora = false;
 
-        bool triggerVR =
-            Gamepad.current != null && Gamepad.current.rightTrigger.wasPressedThisFrame;
+        UnityEngine.XR.InputDevice manoDerecha =
+            UnityEngine.XR.InputDevices.GetDeviceAtXRNode(UnityEngine.XR.XRNode.RightHand);
 
-        if (gatilloDerecho || triggerVR)
+        if (manoDerecha.isValid)
+        {
+            manoDerecha.TryGetFeatureValue(
+                UnityEngine.XR.CommonUsages.triggerButton,
+                out triggerDerechoAhora
+            );
+        }
+
+        bool teclaG = Keyboard.current != null &&
+                      Keyboard.current.gKey.wasPressedThisFrame;
+
+        if ((triggerDerechoAhora && !triggerPresionadoAntes) || teclaG)
         {
             Recoger();
         }
+
+        triggerPresionadoAntes = triggerDerechoAhora;
     }
 
     private void Recoger()
@@ -33,10 +46,6 @@ public class FragmentoLlaveRecolectable : MonoBehaviour
         if (InventarioSistema.Instance != null)
         {
             InventarioSistema.Instance.RecogerFragmento(numeroFragmento);
-        }
-        else
-        {
-            Debug.LogWarning("No existe InventarioSistema en la escena.");
         }
 
         Destroy(gameObject);
@@ -56,6 +65,7 @@ public class FragmentoLlaveRecolectable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             jugadorCerca = false;
+            triggerPresionadoAntes = false;
         }
     }
 }
