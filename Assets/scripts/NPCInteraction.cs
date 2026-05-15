@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class NPCInteraction : MonoBehaviour
 {
@@ -38,9 +39,34 @@ public class NPCInteraction : MonoBehaviour
     public string response2;
     public string response3;
 
+    [Header("Botones VR")]
+    public InputActionReference vrInteract;
+    public InputActionReference vrContinue;
+    public InputActionReference vrOption1;
+    public InputActionReference vrOption2;
+    public InputActionReference vrOption3;
+
     private bool playerInRange = false;
     private int dialogueState = 0;
     private int playerCollidersInside = 0;
+
+    void OnEnable()
+    {
+        if (vrInteract != null) vrInteract.action.performed += OnVRInteract;
+        if (vrContinue != null) vrContinue.action.performed += OnVRContinue;
+        if (vrOption1 != null) vrOption1.action.performed += OnVROption1;
+        if (vrOption2 != null) vrOption2.action.performed += OnVROption2;
+        if (vrOption3 != null) vrOption3.action.performed += OnVROption3;
+    }
+
+    void OnDisable()
+    {
+        if (vrInteract != null) vrInteract.action.performed -= OnVRInteract;
+        if (vrContinue != null) vrContinue.action.performed -= OnVRContinue;
+        if (vrOption1 != null) vrOption1.action.performed -= OnVROption1;
+        if (vrOption2 != null) vrOption2.action.performed -= OnVROption2;
+        if (vrOption3 != null) vrOption3.action.performed -= OnVROption3;
+    }
 
     void Start()
     {
@@ -48,6 +74,14 @@ public class NPCInteraction : MonoBehaviour
         interactButtonObject.SetActive(false);
         dialoguePanel.SetActive(false);
         HideOptions();
+
+        continueButton.gameObject.SetActive(false);
+
+        if (vrInteract != null) vrInteract.action.Enable();
+        if (vrContinue != null) vrContinue.action.Enable();
+        if (vrOption1 != null) vrOption1.action.Enable();
+        if (vrOption2 != null) vrOption2.action.Enable();
+        if (vrOption3 != null) vrOption3.action.Enable();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,7 +90,9 @@ public class NPCInteraction : MonoBehaviour
 
         playerCollidersInside++;
         playerInRange = true;
-        interactButtonObject.SetActive(true);
+
+        if (dialogueState == 0)
+            interactButtonObject.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
@@ -70,6 +106,46 @@ public class NPCInteraction : MonoBehaviour
             playerCollidersInside = 0;
             playerInRange = false;
             CloseDialogue();
+        }
+    }
+
+    void OnVRInteract(InputAction.CallbackContext context)
+    {
+        if (playerInRange && dialogueState == 0)
+        {
+            Interact();
+        }
+    }
+
+    void OnVRContinue(InputAction.CallbackContext context)
+    {
+        if (continueButton.gameObject.activeSelf)
+        {
+            ContinueDialogue();
+        }
+    }
+
+    void OnVROption1(InputAction.CallbackContext context)
+    {
+        if (optionButton1.activeSelf)
+        {
+            ChooseOption(1);
+        }
+    }
+
+    void OnVROption2(InputAction.CallbackContext context)
+    {
+        if (optionButton2.activeSelf)
+        {
+            ChooseOption(2);
+        }
+    }
+
+    void OnVROption3(InputAction.CallbackContext context)
+    {
+        if (optionButton3.activeSelf)
+        {
+            ChooseOption(3);
         }
     }
 
@@ -146,7 +222,9 @@ public class NPCInteraction : MonoBehaviour
     {
         canvasNPC.SetActive(false);
         dialoguePanel.SetActive(false);
+        continueButton.gameObject.SetActive(false);
         HideOptions();
+
         dialogueState = 0;
 
         if (playerInRange)

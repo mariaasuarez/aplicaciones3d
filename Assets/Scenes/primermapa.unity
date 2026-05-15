@@ -57150,6 +57150,26 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: vrOption1
+      value: 
+      objectReference: {fileID: -1501834333107835754, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: vrOption2
+      value: 
+      objectReference: {fileID: -2958136077681806138, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: vrOption3
+      value: 
+      objectReference: {fileID: -7781176906803798127, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: vrContinue
+      value: 
+      objectReference: {fileID: 1490263554673030877, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: vrInteract
+      value: 
+      objectReference: {fileID: 2047160744827491321, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
       propertyPath: finalDialogue
       value: "Escucha bien. La Ingenier\xEDa Multimedia en esta universidad abri\xF3
         oficialmente sus puertas en el a\xF1o 2000, bajo una resoluci\xF3n del 15
