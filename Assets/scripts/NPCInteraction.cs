@@ -121,7 +121,7 @@ public class NPCInteraction : MonoBehaviour
     {
         if (continueButton.gameObject.activeSelf)
         {
-            ContinueDialogue();
+            continueButton.onClick.Invoke();
         }
     }
 
@@ -129,7 +129,7 @@ public class NPCInteraction : MonoBehaviour
     {
         if (optionButton1.activeSelf)
         {
-            ChooseOption(1);
+            optionButton1.GetComponent<Button>().onClick.Invoke();
         }
     }
 
@@ -137,7 +137,7 @@ public class NPCInteraction : MonoBehaviour
     {
         if (optionButton2.activeSelf)
         {
-            ChooseOption(2);
+            optionButton2.GetComponent<Button>().onClick.Invoke();
         }
     }
 
@@ -145,7 +145,7 @@ public class NPCInteraction : MonoBehaviour
     {
         if (optionButton3.activeSelf)
         {
-            ChooseOption(3);
+            optionButton3.GetComponent<Button>().onClick.Invoke();
         }
     }
 
