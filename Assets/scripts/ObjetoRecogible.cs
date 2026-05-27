@@ -7,7 +7,6 @@ public class ObjetoRecogible : MonoBehaviour
     public int idFragmento = 1;
 
     [Header("Referencias")]
-    public InventarioSistema inventarioSistema;
     public GameObject avisoRecoger;
 
     [Header("Input")]
@@ -20,6 +19,7 @@ public class ObjetoRecogible : MonoBehaviour
     {
         if (accionRecoger != null)
         {
+            accionRecoger.action.Enable();
             accionRecoger.action.performed += IntentarRecoger;
         }
     }
@@ -38,9 +38,6 @@ public class ObjetoRecogible : MonoBehaviour
 
         if (avisoRecoger != null)
             avisoRecoger.SetActive(false);
-
-        if (accionRecoger != null)
-            accionRecoger.action.Enable();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -73,6 +70,8 @@ public class ObjetoRecogible : MonoBehaviour
 
     private void IntentarRecoger(InputAction.CallbackContext context)
     {
+        Debug.Log("SE EJECUTÓ OBJETO RECOGIBLE");
+
         if (yaRecogido) return;
 
         if (!jugadorCerca)
@@ -81,10 +80,13 @@ public class ObjetoRecogible : MonoBehaviour
             return;
         }
 
-        if (inventarioSistema != null)
+        if (InventarioSistema.Instance == null)
         {
-            inventarioSistema.RecogerFragmento(idFragmento);
+            Debug.LogWarning("No existe InventarioSistema.Instance en la escena");
+            return;
         }
+
+        InventarioSistema.Instance.RecogerFragmento(idFragmento);
 
         yaRecogido = true;
 

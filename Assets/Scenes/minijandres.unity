@@ -8219,9 +8219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d995bccf8bfaf24d92e84d71b60d99b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagenFragmento1: {fileID: 206067074}
-  imagenFragmento2: {fileID: 1994221615}
-  imagenFragmento3: {fileID: 1666650534}
+  fragmentoUI1: {fileID: 0}
+  fragmentoUI2: {fileID: 0}
+  fragmentoUI3: {fileID: 0}
   tieneFragmento1: 0
   tieneFragmento2: 0
   tieneFragmento3: 0
@@ -12308,6 +12308,26 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 72952756}
+    - target: {fileID: 7907519070162481927, guid: a16a09c5b12c3a141af6f19b83cd08c1, type: 3}
+      propertyPath: vrOption1
+      value: 
+      objectReference: {fileID: -1501834333107835754, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 7907519070162481927, guid: a16a09c5b12c3a141af6f19b83cd08c1, type: 3}
+      propertyPath: vrOption2
+      value: 
+      objectReference: {fileID: -2958136077681806138, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 7907519070162481927, guid: a16a09c5b12c3a141af6f19b83cd08c1, type: 3}
+      propertyPath: vrOption3
+      value: 
+      objectReference: {fileID: -7781176906803798127, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 7907519070162481927, guid: a16a09c5b12c3a141af6f19b83cd08c1, type: 3}
+      propertyPath: vrContinue
+      value: 
+      objectReference: {fileID: 1490263554673030877, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 7907519070162481927, guid: a16a09c5b12c3a141af6f19b83cd08c1, type: 3}
+      propertyPath: vrInteract
+      value: 
+      objectReference: {fileID: 2047160744827491321, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12321,6 +12341,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: vrOption1
+      value: 
+      objectReference: {fileID: -1501834333107835754, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: vrOption2
+      value: 
+      objectReference: {fileID: -2958136077681806138, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: vrOption3
+      value: 
+      objectReference: {fileID: -7781176906803798127, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: vrContinue
+      value: 
+      objectReference: {fileID: 1490263554673030877, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: vrInteract
+      value: 
+      objectReference: {fileID: 2047160744827491321, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 3086594353766564625, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
       propertyPath: m_Name
       value: Interaccion_Guardia
@@ -12390,6 +12430,26 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 72952756}
+    - target: {fileID: 3472093223020471426, guid: b4d83aa66b3c2c24bb23cb64f72854e2, type: 3}
+      propertyPath: vrOption1
+      value: 
+      objectReference: {fileID: -1501834333107835754, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 3472093223020471426, guid: b4d83aa66b3c2c24bb23cb64f72854e2, type: 3}
+      propertyPath: vrOption2
+      value: 
+      objectReference: {fileID: -2958136077681806138, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 3472093223020471426, guid: b4d83aa66b3c2c24bb23cb64f72854e2, type: 3}
+      propertyPath: vrOption3
+      value: 
+      objectReference: {fileID: -7781176906803798127, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 3472093223020471426, guid: b4d83aa66b3c2c24bb23cb64f72854e2, type: 3}
+      propertyPath: vrContinue
+      value: 
+      objectReference: {fileID: 1490263554673030877, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 3472093223020471426, guid: b4d83aa66b3c2c24bb23cb64f72854e2, type: 3}
+      propertyPath: vrInteract
+      value: 
+      objectReference: {fileID: 2047160744827491321, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 5242627071731381728, guid: b4d83aa66b3c2c24bb23cb64f72854e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.24

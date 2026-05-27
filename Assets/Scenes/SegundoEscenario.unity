@@ -10074,6 +10074,26 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7907519070162481927, guid: a16a09c5b12c3a141af6f19b83cd08c1, type: 3}
+      propertyPath: vrOption1
+      value: 
+      objectReference: {fileID: -1501834333107835754, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 7907519070162481927, guid: a16a09c5b12c3a141af6f19b83cd08c1, type: 3}
+      propertyPath: vrOption2
+      value: 
+      objectReference: {fileID: -2958136077681806138, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 7907519070162481927, guid: a16a09c5b12c3a141af6f19b83cd08c1, type: 3}
+      propertyPath: vrOption3
+      value: 
+      objectReference: {fileID: -7781176906803798127, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 7907519070162481927, guid: a16a09c5b12c3a141af6f19b83cd08c1, type: 3}
+      propertyPath: vrContinue
+      value: 
+      objectReference: {fileID: 1490263554673030877, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 7907519070162481927, guid: a16a09c5b12c3a141af6f19b83cd08c1, type: 3}
+      propertyPath: vrInteract
+      value: 
+      objectReference: {fileID: 2047160744827491321, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 7907519070162481927, guid: a16a09c5b12c3a141af6f19b83cd08c1, type: 3}
       propertyPath: finalDialogue
       value: "Estos nodos cuentan la historia de la carrera: antes se llamaba Ingenier\xEDa
         Digital de Dise\xF1o y Arte Tridimensional. En 2005 evolucion\xF3 oficialmente
