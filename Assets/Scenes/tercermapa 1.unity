@@ -4298,16 +4298,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imagenesCorrectas:
-  - {fileID: 2800000, guid: 05eaa73d4b37aa5468ce73e0445087e1, type: 3}
-  - {fileID: 2800000, guid: 41e10982889c64c4aafcd6052d1b87e3, type: 3}
-  - {fileID: 2800000, guid: e9a53135186d9994c8f77062b844df8a, type: 3}
+  - {fileID: 2800000, guid: 783c7cc88a9ac6b46ab487f25a59e467, type: 3}
+  - {fileID: 2800000, guid: b05ee02ff45b7274a8143b581e0b4a4c, type: 3}
+  - {fileID: 2800000, guid: d46d340f7c5126845b393bbf915158d0, type: 3}
   imagenesDeRelleno:
-  - {fileID: 2800000, guid: dcede2126e1e53543a96a8ef5a1dced9, type: 3}
-  - {fileID: 2800000, guid: 0f1b9b81ede79324493753129f3c1220, type: 3}
-  - {fileID: 2800000, guid: 52c2cf5fdf08be345a01fbc7969736bd, type: 3}
-  - {fileID: 2800000, guid: 4430a3db668971447a057d966271cd61, type: 3}
-  - {fileID: 2800000, guid: 3e1ea8de17e670440a52ac8d12a2448b, type: 3}
-  - {fileID: 2800000, guid: 03062902f3f2dc34dbbe3b72b4117bc4, type: 3}
+  - {fileID: 2800000, guid: efb9b23ba87ac5f45a89fa4a5db5ee7c, type: 3}
+  - {fileID: 2800000, guid: 3dfbc039bccaed344b9ca367b63edd7d, type: 3}
+  - {fileID: 2800000, guid: 66b860b2e759d7c488637940cc756f93, type: 3}
+  - {fileID: 2800000, guid: 8856e20dd2a533c4dba3eeb5b10fcf2c, type: 3}
+  - {fileID: 2800000, guid: 71c7871c7e9c14946aa7be1f525d129c, type: 3}
+  - {fileID: 2800000, guid: acc602de3aee4da43b2bd81844d86dda, type: 3}
   botonesAtril:
   - {fileID: 500871005}
   - {fileID: 1979680292}
