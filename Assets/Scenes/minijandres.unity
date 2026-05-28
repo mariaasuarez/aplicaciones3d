@@ -8219,9 +8219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d995bccf8bfaf24d92e84d71b60d99b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagenFragmento1: {fileID: 206067074}
-  imagenFragmento2: {fileID: 1994221615}
-  imagenFragmento3: {fileID: 1666650534}
+  fragmentoUI1: {fileID: 0}
+  fragmentoUI2: {fileID: 0}
+  fragmentoUI3: {fileID: 0}
   tieneFragmento1: 0
   tieneFragmento2: 0
   tieneFragmento3: 0
@@ -9403,7 +9403,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idFragmento: 3
-  inventarioSistema: {fileID: 1266656541}
   avisoRecoger: {fileID: 1018225502}
   accionRecoger: {fileID: 4024832435821890675, guid: 9b912434887e6854da367fee80e64ee5, type: 3}
 --- !u!54 &1617147086
@@ -11112,7 +11111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idFragmento: 2
-  inventarioSistema: {fileID: 1266656541}
   avisoRecoger: {fileID: 244595711}
   accionRecoger: {fileID: 4024832435821890675, guid: 9b912434887e6854da367fee80e64ee5, type: 3}
 --- !u!54 &1842370142
@@ -11186,7 +11184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idFragmento: 1
-  inventarioSistema: {fileID: 1266656541}
   avisoRecoger: {fileID: 1816935481}
   accionRecoger: {fileID: 4024832435821890675, guid: 9b912434887e6854da367fee80e64ee5, type: 3}
 --- !u!54 &1844207310
@@ -12321,6 +12318,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: option1Action
+      value: 
+      objectReference: {fileID: 3056621671744888884, guid: b6d5c44ebe3244b7692e81ae8265eb22, type: 3}
+    - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: option2Action
+      value: 
+      objectReference: {fileID: 7451275385254005361, guid: b6d5c44ebe3244b7692e81ae8265eb22, type: 3}
+    - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: option3Action
+      value: 
+      objectReference: {fileID: -2103668775893129449, guid: b6d5c44ebe3244b7692e81ae8265eb22, type: 3}
+    - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: continueAction
+      value: 
+      objectReference: {fileID: 12488644633972126, guid: b6d5c44ebe3244b7692e81ae8265eb22, type: 3}
+    - target: {fileID: 92526307184786011, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: interactAction
+      value: 
+      objectReference: {fileID: -2229623416768970083, guid: b6d5c44ebe3244b7692e81ae8265eb22, type: 3}
     - target: {fileID: 3086594353766564625, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
       propertyPath: m_Name
       value: Interaccion_Guardia
@@ -12333,6 +12350,22 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 72952756}
+    - target: {fileID: 4361192601998468174, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361192601998468174, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468233163870964953, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.240406
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468233163870964953, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.619999
+      objectReference: {fileID: 0}
     - target: {fileID: 5471867119335804342, guid: 5b068e2a328996d49a309c21c9bf270d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.3495945
