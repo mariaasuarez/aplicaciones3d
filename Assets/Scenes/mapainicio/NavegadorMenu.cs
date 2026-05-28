@@ -9,17 +9,17 @@ public class NavegadorMenu : MonoBehaviour
     public GameObject panelAyuda;
 
     [Header("Configuración de Entrada")]
+    [Tooltip("Asigna aquí la acción mapeada al Botón Y (Secondary Button) del control izquierdo")]
     public InputActionReference alternarMenuAction;
 
-    // Al iniciar el juego, decidimos si arranca oculto o visible
     void Start()
     {
-        // Si quieres que el menú empiece CERRADO al darle Play, descomenta la línea de abajo:
         OcultarMenu();
     }
+
     void Update()
     {
-        // Si presionas la tecla M en el teclado del computador
+        // Mantiene el soporte para pruebas en PC con la tecla M
         if (Input.GetKeyDown(KeyCode.M))
         {
             bool estaVisible = panelPrincipal.activeSelf || panelAjustes.activeSelf || panelAyuda.activeSelf;
@@ -45,10 +45,8 @@ public class NavegadorMenu : MonoBehaviour
         }
     }
 
-    // Se ejecuta al presionar el gatillo
     private void OnAlternarMenu(InputAction.CallbackContext context)
     {
-        // Revisamos si alguno de los paneles está visible actualmente
         bool estaVisible = panelPrincipal.activeSelf || panelAjustes.activeSelf || panelAyuda.activeSelf;
 
         if (estaVisible)
@@ -79,7 +77,6 @@ public class NavegadorMenu : MonoBehaviour
         panelPrincipal.SetActive(true);
     }
 
-    // En lugar de apagar el objeto con el script, solo apagamos los paneles visuales
     public void OcultarMenu()
     {
         DesactivarTodosLosPaneles();
