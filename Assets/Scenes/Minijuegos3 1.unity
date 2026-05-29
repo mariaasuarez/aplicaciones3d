@@ -9976,7 +9976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6836091539529265897, guid: 788d60d7862160546819118e1d315d95, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.425
+      value: 0.4259
       objectReference: {fileID: 0}
     - target: {fileID: 6836091539529265897, guid: 788d60d7862160546819118e1d315d95, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -10922,6 +10922,7 @@ MonoBehaviour:
   panelPrincipal: {fileID: 1959636927}
   panelAjustes: {fileID: 693656946}
   panelAyuda: {fileID: 1947735857}
+  alternarMenuAction: {fileID: 0}
 --- !u!114 &1612061361
 MonoBehaviour:
   m_ObjectHideFlags: 0
