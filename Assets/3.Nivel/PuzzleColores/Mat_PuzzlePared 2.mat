@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Oculta_Azul:
-        m_Texture: {fileID: 2800000, guid: e9a53135186d9994c8f77062b844df8a, type: 3}
+        m_Texture: {fileID: 2800000, guid: d46d340f7c5126845b393bbf915158d0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Oculta_Roja:

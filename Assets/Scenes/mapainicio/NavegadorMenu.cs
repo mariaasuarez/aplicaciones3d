@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class NavegadorMenu : MonoBehaviour
 {
@@ -7,34 +8,84 @@ public class NavegadorMenu : MonoBehaviour
     public GameObject panelAjustes;
     public GameObject panelAyuda;
 
-    // Esta función se llama al empezar para que siempre inicie en el Principal
+    [Header("Configuración de Entrada")]
+    [Tooltip("Asigna aquí la acción mapeada al Botón Y (Secondary Button) del control izquierdo")]
+    public InputActionReference alternarMenuAction;
+
+    void Start()
+    {
+        OcultarMenu();
+    }
+
+    void Update()
+    {
+        // Mantiene el soporte para pruebas en PC con la tecla M
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            bool estaVisible = panelPrincipal.activeSelf || panelAjustes.activeSelf || panelAyuda.activeSelf;
+            if (estaVisible) OcultarMenu();
+            else IrAlPrincipal();
+        }
+    }
+
     void OnEnable()
     {
-        IrAlPrincipal();
+        if (alternarMenuAction != null)
+        {
+            alternarMenuAction.action.Enable();
+            alternarMenuAction.action.performed += OnAlternarMenu;
+        }
+    }
+
+    void OnDisable()
+    {
+        if (alternarMenuAction != null)
+        {
+            alternarMenuAction.action.performed -= OnAlternarMenu;
+        }
+    }
+
+    private void OnAlternarMenu(InputAction.CallbackContext context)
+    {
+        bool estaVisible = panelPrincipal.activeSelf || panelAjustes.activeSelf || panelAyuda.activeSelf;
+
+        if (estaVisible)
+        {
+            OcultarMenu();
+        }
+        else
+        {
+            IrAlPrincipal();
+        }
     }
 
     public void IrAAjustes()
     {
-        DesactivarTodo();
+        DesactivarTodosLosPaneles();
         panelAjustes.SetActive(true);
     }
 
     public void IrAAyuda()
     {
-        DesactivarTodo();
+        DesactivarTodosLosPaneles();
         panelAyuda.SetActive(true);
     }
 
     public void IrAlPrincipal()
     {
-        DesactivarTodo();
+        DesactivarTodosLosPaneles();
         panelPrincipal.SetActive(true);
     }
 
-    private void DesactivarTodo()
+    public void OcultarMenu()
     {
-        panelPrincipal.SetActive(false);
-        panelAjustes.SetActive(false);
-        panelAyuda.SetActive(false);
+        DesactivarTodosLosPaneles();
+    }
+
+    private void DesactivarTodosLosPaneles()
+    {
+        if (panelPrincipal != null) panelPrincipal.SetActive(false);
+        if (panelAjustes != null) panelAjustes.SetActive(false);
+        if (panelAyuda != null) panelAyuda.SetActive(false);
     }
 }
