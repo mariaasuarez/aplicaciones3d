@@ -31,7 +31,7 @@
                 {
                     "name": "",
                     "id": "e2eff93f-cd50-43cc-bfda-fa9e5b2b493f",
-                    "path": "<XRController>{LeftHand}/{SecondaryTrigger}",
+                    "path": "<QuestTouchPlusController>{RightHand}/triggerPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

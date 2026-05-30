@@ -78,13 +78,15 @@ public class ObjetoRecogible : MonoBehaviour
             return;
         }
 
-        if (InventarioSistema.Instance == null)
+        if (InventarioSistema.Instance != null)
         {
-            Debug.LogWarning("No existe InventarioSistema.Instance en la escena");
+            InventarioSistema.Instance.RecogerFragmento(idFragmento);
+        }
+        else
+        {
+            Debug.LogWarning("No existe InventarioSistema en la escena.");
             return;
         }
-
-        InventarioSistema.Instance.RecogerFragmento(idFragmento);
 
         yaRecogido = true;
 
