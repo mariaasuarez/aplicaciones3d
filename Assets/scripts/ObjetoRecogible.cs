@@ -3,13 +3,8 @@ using UnityEngine.InputSystem;
 
 public class ObjetoRecogible : MonoBehaviour
 {
-    [Header("Configuración")]
     public int idFragmento = 1;
-
-    [Header("Referencias")]
     public GameObject avisoRecoger;
-
-    [Header("Input")]
     public InputActionReference accionRecoger;
 
     private bool jugadorCerca = false;
@@ -27,15 +22,11 @@ public class ObjetoRecogible : MonoBehaviour
     private void OnDisable()
     {
         if (accionRecoger != null)
-        {
             accionRecoger.action.performed -= IntentarRecoger;
-        }
     }
 
     private void Start()
     {
-        jugadorCerca = false;
-
         if (avisoRecoger != null)
             avisoRecoger.SetActive(false);
     }
@@ -63,30 +54,33 @@ public class ObjetoRecogible : MonoBehaviour
 
             if (avisoRecoger != null)
                 avisoRecoger.SetActive(false);
-
-            Debug.Log("Jugador lejos de " + gameObject.name);
         }
     }
 
     private void IntentarRecoger(InputAction.CallbackContext context)
     {
-        if (yaRecogido) return;
+        Debug.Log("Se oprimió recoger");
 
         if (!jugadorCerca)
         {
-            Debug.Log("No puedes recoger " + gameObject.name + " porque no estás cerca");
+            Debug.Log("Estás oprimiendo recoger, pero no estás cerca.");
             return;
         }
 
-        if (InventarioSistema.Instance != null)
-        {
-            InventarioSistema.Instance.RecogerFragmento(idFragmento);
-        }
-        else
+        Recoger();
+    }
+
+    public void Recoger()
+    {
+        if (yaRecogido) return;
+
+        if (InventarioSistema.Instance == null)
         {
             Debug.LogWarning("No existe InventarioSistema en la escena.");
             return;
         }
+
+        InventarioSistema.Instance.RecogerFragmento(idFragmento);
 
         yaRecogido = true;
 

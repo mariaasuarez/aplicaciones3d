@@ -19,8 +19,8 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "ff93db0e-4baf-40c6-b497-574708fd4ef9",
-                    "path": "<Keyboard>/0",
+                    "id": "e2eff93f-cd50-43cc-bfda-fa9e5b2b493f",
+                    "path": "<QuestTouchPlusController>{RightHand}/triggerPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -30,8 +30,8 @@
                 },
                 {
                     "name": "",
-                    "id": "e2eff93f-cd50-43cc-bfda-fa9e5b2b493f",
-                    "path": "<QuestTouchPlusController>{RightHand}/triggerPressed",
+                    "id": "3c2d9abc-a834-48b1-be20-2e850d80ca6e",
+                    "path": "<Keyboard>/#(G)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
